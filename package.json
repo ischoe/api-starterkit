@@ -5,9 +5,33 @@
   "author": "ischoe",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "npm run open:server",
+    "start:dev": "npm-run-all --parallel mongo:init open:server lint:watch test:watch",
+    "open:server": "babel-node src/index.js",
+    "mongo:init": "babel-node mongoScripts/mongoInit.js",
+    "mongo:clean": "babel-node mongoScripts/mongoClean.js",
+    "mongo-win": "md mongo-db & \"C:/Program Files/MongoDB/Server/3.2/bin/mongod.exe\" --dbpath mongo-db --port 27017",
+    "clean-db": "babel-node mongoScripts/mongoClean.js",
+    "lint": "esw webpack.config.*, src, buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "tape -r babel-register src/**/*.test.js | faucet",
+    "test:watch": "tape-watch -r babel-register src/**/*.test.js | faucet",
+    "prebuild" : "npm-run-all test lint"
   },
   "dependencies": {
-    "express": "4.13.3"
+    "eslint": "3.8.1",
+    "eslint-plugin-import": "2.0.1",
+    "eslint-watch": "2.1.14",
+    "tape": "4.6.2",
+    "tape-watch": "2.2.4",
+    "npm-run-all": "3.1.1",
+    "express": "4.13.3",
+    "mongodb": "2.2.11",
+    "babel-cli": "6.16.0",
+    "babel-core": "6.17.0",
+    "babel-loader": "6.2.5",
+    "babel-preset-latest": "6.16.0",
+    "babel-register": "6.16.3",
+    "faucet": "0.0.1"
   }
 }

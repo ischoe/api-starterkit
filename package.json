@@ -10,13 +10,12 @@
     "open:server": "babel-node src/index.js",
     "mongo:init": "babel-node mongoScripts/mongoInit.js",
     "mongo:clean": "babel-node mongoScripts/mongoClean.js",
-    "mongo-win": "md mongo-db & \"C:/Program Files/MongoDB/Server/3.2/bin/mongod.exe\" --dbpath mongo-db --port 27017",
-    "clean-db": "babel-node mongoScripts/mongoClean.js",
+    "mongo-win": "md mongo-db & \"C:/Program Files/MongoDB/Server/3.2/bin/mongod.exe\" --dbpath mongo-db --port 27017 --rest --auth",
     "lint": "esw webpack.config.*, src, buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "tape -r babel-register src/**/*.test.js | faucet",
     "test:watch": "tape-watch -r babel-register src/**/*.test.js | faucet",
-    "prebuild" : "npm-run-all test lint"
+    "prebuild": "npm-run-all test lint"
   },
   "dependencies": {
     "eslint": "3.8.1",
@@ -33,5 +32,12 @@
     "babel-preset-latest": "6.16.0",
     "babel-register": "6.16.3",
     "faucet": "0.0.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "connect-mongo": "^1.3.2",
+    "cors": "^2.8.1",
+    "express-session": "^1.14.2",
+    "uuid": "^3.0.1"
   }
 }

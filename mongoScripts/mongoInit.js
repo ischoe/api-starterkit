@@ -13,7 +13,7 @@ const insertUsers = function(db, callback) {
  			{"_id" : 3, "firstName" : "Michael", "email" : "", "key": "34567", "token": "", "role": "user"},
       {"_id" : 4, "firstName" : "Werner", "email" : "", "key": "123", "token": "", "role": "user"},
  			{"_id" : 5, "firstName" : "Elisabeth", "email" : "", "key": "123", "token": "", "role": "user"},
-      {"_id" : 6, "firstName" : "Admin", "email" : "", "key": "supersecret1337", "token": "", "role": "admin"}
+      {"_id" : 6, "firstName" : "Admin", "email" : "", "key": "secret", "token": "", "role": "admin"}
  		], function(err, result) {
     assert.equal(err, null);
     console.log("Inserted a document into the users collection.");
